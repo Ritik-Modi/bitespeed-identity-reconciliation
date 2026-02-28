@@ -133,50 +133,10 @@ curl -X POST http://localhost:3000/identify -H "Content-Type: application/json" 
 docker compose up --build
 ```
 
-## Publish to GitHub
+## Deployed API
 
-1. Create an empty GitHub repository (example: `bitespeed-identity-reconciliation`).
-2. Push this local project:
+- `POST https://bitespeed-identity-reconciliation-fa6v.onrender.com/identify`
 
-```bash
-git init
-git add .
-git commit -m "chore: bootstrap identity reconciliation service"
-git remote add origin https://github.com/<your-username>/bitespeed-identity-reconciliation.git
-git branch -M main
-git push -u origin main
-```
+## Repository
 
-3. Continue making small commits with clear intent, for example:
-
-```bash
-git add src/services/identity.service.ts
-git commit -m "feat: handle primary-cluster merge in single transaction"
-
-git add src/middlewares/validation.middleware.ts
-git commit -m "feat: enforce JSON input validation for identify payload"
-
-git add README.md
-git commit -m "docs: document deployment and endpoint usage"
-```
-
-## Deploy on Render
-
-This repo includes [`render.yaml`](/Users/ritikmodi/Documents/Projects/bitespeed/render.yaml) for Blueprint deploy.
-
-1. Push repository to GitHub.
-2. In Render, click `New` -> `Blueprint` and select this repo.
-3. Render will create:
-- A free PostgreSQL database
-- A web service with build/start commands
-4. After deploy, add your live endpoint URL below.
-
-Live endpoint:
-
-`POST https://<your-render-service>.onrender.com/identify`
-
-## Submission Notes
-
-- `POST /identify` is the only required endpoint for this task.
-- Schema includes indexes on `email`, `phoneNumber`, and `linkedId`.
-- Merge logic preserves deterministic primary selection by `createdAt`, then `id`.
+- `https://github.com/Ritik-Modi/bitespeed-identity-reconciliation`
